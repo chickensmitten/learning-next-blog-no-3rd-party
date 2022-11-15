@@ -1,4 +1,4 @@
-# Learning next blog app with no 3rd party
+# Learning next blog app with no 3rd party with TypeScript
 ## Setup
 - uses `pnpm` for package management
 - install tailwind 
