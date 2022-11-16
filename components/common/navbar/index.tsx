@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { navigation } from './navigation';
+import { ContentSearch } from '@components/search';
 
 const Navbar = () => {
 
@@ -27,14 +28,16 @@ const Navbar = () => {
             <div className="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
               <div className="flex w-full items-center justify-between md:w-auto">
                 <Link href="/">
-                  <span className="sr-only">Your Company</span>
-                  <Image
-                    width={30}
-                    height={30}
-                    alt="Your Company"
-                    className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  />
+                  <a>
+                    <span className="sr-only">Your Company</span>
+                    <Image
+                      width={30}
+                      height={30}
+                      alt="Your Company"
+                      className="h-8 w-auto sm:h-10"
+                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    />
+                  </a>
                 </Link>
                 <div className="-mr-2 flex items-center md:hidden">
                   <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -46,13 +49,15 @@ const Navbar = () => {
             </div>
             <div className="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
               {navigation.map((item) => (
-                <Link key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
-                  {item.name}
+                <Link key={item.name} href={item.href}>
+                  <a className="font-medium text-gray-500 hover:text-gray-900">
+                    {item.name}
+                  </a>
                 </Link>
               ))}
             </div>
             <div className="hidden md:block">
-              {/* Search Input Component */}
+              <ContentSearch />
             </div>
           </nav>
         </div>
@@ -90,13 +95,17 @@ const Navbar = () => {
               </div>
               <div className="space-y-1 px-2 pt-2 pb-3">
                 {navigation.map((item) => (
-                  <Link key={item.name} href={item.href} className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
-                    {item.name}
+                  <Link key={item.name} href={item.href}>
+                    <a
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      {item.name}
+                    </a>
                   </Link>
                 ))}
               </div>
               <div className="px-4">
-                {/* Search Input Component */}
+                <ContentSearch />
               </div>
               <a
                 href="#"

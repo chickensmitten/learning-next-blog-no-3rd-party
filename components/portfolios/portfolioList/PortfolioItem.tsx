@@ -1,8 +1,15 @@
 
+import { Portfolio } from "@interfaces/Portfolio";
+import { shortify } from "@lib/client/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { FunctionComponent } from "react";
 
-export const PortfolioItem = ({portfolio}: any) => {
+type Props = {
+  portfolio: Portfolio
+}
+
+export const PortfolioItem: FunctionComponent<Props> = ({portfolio}) => {
 
   return (
     <div className="group relative">
@@ -16,11 +23,13 @@ export const PortfolioItem = ({portfolio}: any) => {
       </div>
       <h3 className="mt-6 text-sm text-gray-500">
         <Link href={`/portfolios/${portfolio.slug}`}>
-          <span className="absolute inset-0" />
-          { portfolio.title }
+          <a>
+            <span className="absolute inset-0" />
+            { shortify(portfolio.title) }
+          </a>
         </Link>
       </h3>
-      <p className="text-base font-semibold text-gray-900">{ portfolio.description }</p>
+      <p className="text-base font-semibold text-gray-900">{ shortify(portfolio.description) }</p>
     </div>
   )
 }
